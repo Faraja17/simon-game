@@ -20,11 +20,20 @@ $(".btn").on("click", function() {
     let userChosenColor = this.id;
     userClickedPattern.push(userChosenColor);
     playSound(userChosenColor);
+    animatePress(userChosenColor);
 });
 
 const playSound = (input) => {
     let audio = new Audio(`sounds/${input}.mp3`);
         audio.play();
+}
+
+const animatePress = (currentColor) => {
+        $(`.${currentColor}`).addClass("pressed");
+
+        setTimeout(function() {
+            $(`.${currentColor}`).removeClass("pressed");
+        }, 1000);
 }
 
     
