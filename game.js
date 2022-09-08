@@ -12,20 +12,21 @@ const nextSequence = () => {
     $(document).on("keypress",function() { //keypress starts game (user must interact for audio to work)
 
         $(`#${randomChosenColor}`).fadeOut(100).fadeIn(100); //flashes random button
-
-        let audio = new Audio(`sounds/${randomChosenColor}.mp3`);
-        audio.play();
+        playSound(randomChosenColor);
     });
-
-   
 }
 
 $(".btn").on("click", function() {
     let userChosenColor = this.id;
-    console.log(userChosenColor);
     userClickedPattern.push(userChosenColor);
-    console.log(userClickedPattern);
+    playSound(userChosenColor);
 });
+
+const playSound = (input) => {
+    let audio = new Audio(`sounds/${input}.mp3`);
+        audio.play();
+}
+
     
 nextSequence();
 
