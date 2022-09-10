@@ -19,6 +19,6 @@
 
 I had difficulty in step 8. My code was able to perform the check after the entire sequence, but not after each play. I continued through to step 10, then made necessary adjustments after viewing the solution.
 
-I also decided to add a function for user play in order to prevent the user from making annoying random clicks prior to the start of the game (you can see the difference by comparing [my version](https://faraja17.github.io/simon-game/) with [App Brewery's solution version of the game](https://londonappbrewery.github.io/Simon-Game/) by clicking buttons before and after pressing a key). In order to minimize random clicks at the end of the game, I added a setTimeOut function that refreshes the page within 500 milliseconds. A couple of random clicks can still make it through with effort, though.
+I also decided to add a userPlay() in order to prevent the user from making annoying random clicks prior to the start of the game (you can see the difference by comparing [my version](https://faraja17.github.io/simon-game/) with [App Brewery's solution version of the game](https://londonappbrewery.github.io/Simon-Game/) by clicking buttons before and after pressing a key). In order to minimize random clicks at the end of the game, I added a setTimeOut function that refreshes the page within 500 milliseconds. A couple of random clicks can still make it through with effort, though.
 
 This was a great challenge, and I like jQuery!
