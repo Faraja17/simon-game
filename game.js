@@ -4,6 +4,8 @@ let userClickedPattern = [];
 let level = 0;
 
 const nextSequence = () => {
+
+    userClickedPattern = [];
     
     randomNumber = Math.floor(Math.random() * 4);
 
@@ -16,22 +18,21 @@ const nextSequence = () => {
     level++;
 
     $("#level-title").text(`Level ${level}`); //changes the h1
-    
-    userClickedPattern = [];
 }
 
-//user game play
+const userPlay = () => { //user game play
 
-$(".btn").on("click", function() {
-    let userChosenColor = this.id;
-    userClickedPattern.push(userChosenColor);
+    $(".btn").on("click", function() {
+        let userChosenColor = this.id;
+        userClickedPattern.push(userChosenColor);
 
-    playSound(userChosenColor);
-    animatePress(userChosenColor);
+        playSound(userChosenColor);
+        animatePress(userChosenColor);
 
-    checkAnswer(userClickedPattern.length - 1); //the parameter is the last index of the user array
-    
-});
+        checkAnswer(userClickedPattern.length - 1); //the parameter is the last index of the user array
+        
+    });
+};
 
 const playSound = (input) => {
     let audio = new Audio(`sounds/${input}.mp3`);
@@ -65,16 +66,22 @@ const checkAnswer = (currentLevel) => {
 
         $("#level-title").text(`Game Over, Press Any Key to Restart`); //changes the h1
 
-        startGame();
+        $(".btn").on("click", function() {
+            let userChosenColor = this.id;
+            userClickedPattern.push(userChosenColor);
+                   
+        });
+
+        startOver();
 
     }
 }
 
-// const startOver = () => {
-//     gamePattern = [];
-//     level = 0;
-//     startGame();
-// }
+const startOver = () => {
+    $(document).on("keypress",function() { //keypress starts game (user must interact for audio to work)        
+       this.location.reload();
+    });
+}
 
 const startGame = () => {
     $(document).one("keypress",function() { //keypress starts game (user must interact for audio to work)        
@@ -82,6 +89,7 @@ const startGame = () => {
         gamePattern = [];
         level = 0;
         nextSequence();
+        userPlay();
     });
 }
 
