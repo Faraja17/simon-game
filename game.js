@@ -57,6 +57,17 @@ const checkAnswer = (currentLevel, gamePrompt) => {
         }, 1000); 
     } else {
         console.log("wrong");
+        playSound("wrong");
+
+        $("body").addClass("game-over"); //flashes red to indicate wrong answer
+
+        setTimeout(function() {
+            $("body").removeClass("game-over");
+        }, 200);
+
+        $("#level-title").text(`Game Over, Press Any Key to Restart`); //changes the h1
+
+
     }
     console.log(userClickedPattern, gamePattern)
     
