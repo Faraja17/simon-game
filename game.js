@@ -64,24 +64,17 @@ const checkAnswer = (currentLevel) => {
             $("body").removeClass("game-over");
         }, 200);
 
-        $("#level-title").text(`Game Over, Press Any Key to Restart`); //changes the h1
+        $("#level-title").text(`Game Over`); //changes the h1
 
-        $(".btn").on("click", function() {
-            let userChosenColor = this.id;
-            userClickedPattern.push(userChosenColor);
-                   
-        });
-
-        startOver();
-
+        setTimeout(function() {
+            location.reload();
+        }, 3000);
     }
 }
 
-const startOver = () => {
-    $(document).on("keypress",function() { //keypress starts game (user must interact for audio to work)        
-       this.location.reload();
-    });
-}
+// const startOver = () => {
+//     location.reload();
+// }
 
 const startGame = () => {
     $(document).one("keypress",function() { //keypress starts game (user must interact for audio to work)        
