@@ -53,7 +53,7 @@ const checkAnswer = (currentLevel) => {
                 nextSequence();
             }, 1000); 
         };
-        
+
     } else {
         playSound("wrong");
 
@@ -65,19 +65,22 @@ const checkAnswer = (currentLevel) => {
 
         $("#level-title").text(`Game Over, Press Any Key to Restart`); //changes the h1
 
-        startOver();
+        startGame();
 
     }
 }
 
-const startOver = () => {
-    level = 0;
-    gamePattern = [];
-    startGame();
-}
+// const startOver = () => {
+//     gamePattern = [];
+//     level = 0;
+//     startGame();
+// }
 
 const startGame = () => {
     $(document).one("keypress",function() { //keypress starts game (user must interact for audio to work)        
+        userClickedPattern = [];
+        gamePattern = [];
+        level = 0;
         nextSequence();
     });
 }
