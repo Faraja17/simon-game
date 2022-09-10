@@ -1,5 +1,5 @@
 const buttonColors = ["red", "blue", "green", "yellow"];
-const gamePattern = [];  
+let gamePattern = [];  
 let userClickedPattern = [];
 let level = 0;
 
@@ -14,7 +14,6 @@ const nextSequence = () => {
     $(`#${randomChosenColor}`).fadeOut(100).fadeIn(100); //flashes random button
     playSound(randomChosenColor);
     level++;
-    console.log(level);
 
     $("#level-title").text(`Level ${level}`); //changes the h1
     
@@ -50,13 +49,11 @@ const animatePress = (currentColor) => {
 
 const checkAnswer = (currentLevel, gamePrompt) => {
     if (currentLevel === gamePrompt) {
-        console.log("success");
 
         setTimeout(function() {
             nextSequence();
         }, 1000); 
     } else {
-        console.log("wrong");
         playSound("wrong");
 
         $("body").addClass("game-over"); //flashes red to indicate wrong answer
@@ -67,15 +64,24 @@ const checkAnswer = (currentLevel, gamePrompt) => {
 
         $("#level-title").text(`Game Over, Press Any Key to Restart`); //changes the h1
 
+        startOver();
 
     }
-    console.log(userClickedPattern, gamePattern)
-    
 }
 
-$(document).one("keypress",function() { //keypress starts game (user must interact for audio to work)        
-    nextSequence();
-});
+const startOver = () => {
+    level = 0;
+    gamePattern = [];
+    startGame();
+}
+
+const startGame = () => {
+    $(document).one("keypress",function() { //keypress starts game (user must interact for audio to work)        
+        nextSequence();
+    });
+}
+
+startGame();
 
 
 
