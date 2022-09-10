@@ -68,13 +68,9 @@ const checkAnswer = (currentLevel) => {
 
         setTimeout(function() {
             location.reload();
-        }, 3000);
+        }, 500);
     }
 }
-
-// const startOver = () => {
-//     location.reload();
-// }
 
 const startGame = () => {
     $(document).one("keypress",function() { //keypress starts game (user must interact for audio to work)        
