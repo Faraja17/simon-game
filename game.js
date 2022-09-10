@@ -25,13 +25,12 @@ const nextSequence = () => {
 $(".btn").on("click", function() {
     let userChosenColor = this.id;
     userClickedPattern.push(userChosenColor);
-    let lastAnswer = userClickedPattern[userClickedPattern.length - 1];
-    let gamePrompt = gamePattern[gamePattern.length - 1];
+
     playSound(userChosenColor);
     animatePress(userChosenColor);
-    if (userClickedPattern.length === gamePattern.length) { //allows user to keep playing until player array length matches game array
-        checkAnswer(lastAnswer, gamePrompt);
-    }
+
+    checkAnswer(userClickedPattern.length - 1); //the parameter is the last index of the user array
+    
 });
 
 const playSound = (input) => {
@@ -47,12 +46,14 @@ const animatePress = (currentColor) => {
         }, 100);
 }
 
-const checkAnswer = (currentLevel, gamePrompt) => {
-    if (currentLevel === gamePrompt) {
-
-        setTimeout(function() {
-            nextSequence();
-        }, 1000); 
+const checkAnswer = (currentLevel) => {
+    if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
+        if(userClickedPattern.length === gamePattern.length) {
+            setTimeout(function() {
+                nextSequence();
+            }, 1000); 
+        };
+        
     } else {
         playSound("wrong");
 
