@@ -80,6 +80,13 @@ const startGame = () => {
         nextSequence();
         userPlay();
     });
+    $("#level-title").one("click",function() { //click of h1 starts game (user must interact for audio to work)        
+        userClickedPattern = [];
+        gamePattern = [];
+        level = 0;
+        nextSequence();
+        userPlay();
+    });
 }
 
 startGame();
