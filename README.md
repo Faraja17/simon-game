@@ -23,4 +23,4 @@ I also decided to add a userPlay() in order to prevent the user from making anno
 
 After testing the game on my phone, I realized that I needed to enable a click option to start the game, so I swiftly used jQuery to revise the startGame() with an event handler--in under a minute!
 
-This was a great challenge, and I like jQuery!
+This was a great challenge, a nice review of DOM manipulation, and I like jQuery!
